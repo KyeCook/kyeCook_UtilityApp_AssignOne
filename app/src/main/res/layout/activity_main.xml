@@ -21,17 +21,34 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/americanValue"
+            android:layout_marginLeft="30dp"
+            android:text="@string/usd"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:id="@+id/usTextField" />
+            android:id="@+id/countryToBeConverted"
+            android:textSize="36sp"
+            android:textStyle="normal|bold" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginRight="30dp"
             android:id="@+id/moneyToConvertInput"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="36sp"
+            android:gravity="end" />
 
     </LinearLayout>
+
+    <TextView
+        android:text="@string/americanValue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/countryToBeConvertedString"
+        android:layout_weight="1"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="30sp"
+        android:textAlignment="center" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -44,7 +61,8 @@
             android:id="@+id/conversionButton"
             android:layout_gravity="bottom"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textStyle="normal|bold" />
+            android:textStyle="normal|bold"
+            android:textSize="30sp" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -55,16 +73,33 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/australianValue"
+           android:layout_marginLeft="30dp"
+            android:text="@string/aud"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:id="@+id/ausText" />
+            android:id="@+id/ausText"
+            android:textSize="36sp"
+            android:textStyle="normal|bold" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginRight="30dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:id="@+id/convertedCurrency" />
+            android:id="@+id/convertedCurrency"
+            android:textSize="36sp"
+            android:gravity="right" />
     </LinearLayout>
+
+    <TextView
+        android:text="@string/australianValue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView5"
+        android:layout_weight="1"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="30sp"
+        android:textAlignment="center" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -78,6 +113,7 @@
             android:id="@+id/settingsButton"
             android:layout_gravity="bottom"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textStyle="normal|bold" />
+            android:textStyle="normal|bold"
+            android:textSize="30sp" />
     </LinearLayout>
 </LinearLayout>

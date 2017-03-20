@@ -1,7 +1,9 @@
 <resources>
-    <string name="app_name">kyeCook_UtilityApp</string>
-    <string name="americanValue">United States Dollars (USD)</string>
-    <string name="australianValue">Australian Dollars (AUD)</string>
+    <string name="app_name">Australian Currency Converter</string>
+    <string name="americanValue">United States Dollars</string>
+    <string name="australianValue">Australian Dollars</string>
     <string name="settingsButtonText">Settings</string>
     <string name="convertButtonText">Convert</string>
+    <string name="aud">AUD</string>
+    <string name="usd">USD</string>
 </resources>
