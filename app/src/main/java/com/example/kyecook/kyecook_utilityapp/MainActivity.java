@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
                 try {
 
-                    currency = Integer.parseInt(s.toString());
+                    currency = Double.parseDouble(s.toString());
 
 //                    convertedCurrency.setText(String.valueOf("$" + currency));
 
