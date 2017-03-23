@@ -6,4 +6,6 @@
     <string name="convertButtonText">Convert</string>
     <string name="aud">AUD</string>
     <string name="usd">USD</string>
+    <string name="euros_conversion">Euros Conversion</string>
+    <string name="usd_conversion">USD Conversion</string>
 </resources>
