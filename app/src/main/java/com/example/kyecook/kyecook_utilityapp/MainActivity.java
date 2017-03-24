@@ -27,6 +27,9 @@ public class MainActivity extends AppCompatActivity {
     private TextView countryToBeConverted;
     private TextView countryToBeConvertedString;
 
+    private TextView convertedCountryText;
+    private TextView convertedCountryCurrency;
+
     private TextView convertedCurrency;
     private double currency;
     private SharedPreferences preferences;
@@ -44,10 +47,15 @@ public class MainActivity extends AppCompatActivity {
 
         countryToBeConverted = (TextView) findViewById(R.id.countryToBeConverted);
         countryToBeConvertedString = (TextView) findViewById(R.id.countryToBeConvertedString);
+
+        convertedCountryText = (TextView) findViewById(R.id.convertedCountryText);
+        convertedCountryCurrency = (TextView) findViewById(R.id.convertedCountryCurrency);
+
         convertedCurrency = (TextView) findViewById(R.id.convertedCurrency);
         moneyToConvert = (EditText) findViewById(R.id.moneyToConvertInput);
 
         Button conversionButton = (Button) findViewById(R.id.conversionButton);
+        Button switchConversions = (Button) findViewById(R.id.switchConversions);
 
         moneyToConvert.addTextChangedListener(new TextWatcher() {
             @Override
@@ -84,14 +92,45 @@ public class MainActivity extends AppCompatActivity {
         /* This is the segment for the conversion button. It uses values from Settings Activity
                 in calculations */
 
-
+                String convertedCurrencyString;
 
                 double currencyToConvert = Double.parseDouble(preferences.getString("countryCurrency",""));
 
-                String convertedCurrencyString = '$' + String.valueOf(currency * currencyToConvert);
+                if(countryToBeConverted.getText().toString().equals("AUD")){
+                    convertedCurrencyString = '$' + String.valueOf(currency / currencyToConvert);
+                    convertedCurrency.setText(convertedCurrencyString);
+                } else {
 
-                convertedCurrency.setText(convertedCurrencyString);
+                    convertedCurrencyString = '$' + String.valueOf(currency * currencyToConvert);
+                    convertedCurrency.setText(convertedCurrencyString);
+                }
 
+            }
+        });
+
+        switchConversions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+/*
+                Handles switching of currencies too alow user to iput Australian currency to see
+                foreign value
+                 */
+
+                if(countryToBeConverted.getText().toString().equals("AUD")){
+
+                    countryToBeConverted.setText(preferences.getString("currency", ""));
+                    countryToBeConvertedString.setText(preferences.getString("country", ""));
+
+                    convertedCountryCurrency.setText(R.string.aud);
+                    convertedCountryText.setText(R.string.australianValue);
+
+                } else {
+                    convertedCountryCurrency.setText(preferences.getString("currency", ""));
+                    convertedCountryText.setText(preferences.getString("country", ""));
+
+                    countryToBeConverted.setText(R.string.aud);
+                    countryToBeConvertedString.setText(R.string.australianValue);
+                }
             }
         });
 

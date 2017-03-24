@@ -78,7 +78,7 @@
            android:layout_marginLeft="30dp"
             android:text="@string/aud"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:id="@+id/ausText"
+            android:id="@+id/convertedCountryCurrency"
             android:textSize="36sp"
             android:textStyle="normal|bold" />
 
@@ -96,7 +96,7 @@
         android:text="@string/australianValue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView5"
+        android:id="@+id/convertedCountryText"
         android:layout_weight="1"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="30sp"
@@ -105,18 +105,31 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:id="@+id/LinearLayout">
 
 
         <Button
-            android:text="@string/settingsButtonText"
+            android:text="@string/switch_conversion"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/settingsButton"
-            android:layout_gravity="bottom"
+            android:layout_height="match_parent"
+            android:id="@+id/switchConversions"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textStyle="normal|bold"
-            android:textSize="30sp"
-            android:onClick="settingsHandler" />
+            android:textSize="30sp"/>
+
     </LinearLayout>
+
+    <Button
+        android:text="@string/settingsButtonText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/settingsButton"
+        android:layout_gravity="bottom"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textStyle="normal|bold"
+        android:textSize="30sp"
+        android:onClick="settingsHandler"
+        android:layout_weight="1" />
+
 </LinearLayout>
