@@ -24,6 +24,8 @@ public class settingsActivity extends AppCompatActivity {
 
         Button usdButton = (Button) findViewById(R.id.changeToUSD);
         Button euruButton = (Button) findViewById(R.id.changeToEUR);
+        Button yenButton = (Button) findViewById(R.id.changeToYEN);
+        Button sekButton = (Button) findViewById(R.id.changeToSEK);
 
 //        Handles USD button operation - sets American values to preferences to be used by main Activity
         usdButton.setOnClickListener(new View.OnClickListener() {
@@ -49,6 +51,36 @@ public class settingsActivity extends AppCompatActivity {
                 countryToConvert = "Euro Currency";
                 currencyToConvert = "EURO";
                 countryCurrency = "1.41";
+
+                preferences.edit().putString("country", countryToConvert).apply();
+                preferences.edit().putString("currency", currencyToConvert).apply();
+                preferences.edit().putString("countryCurrency", countryCurrency).apply();
+
+            }
+        });
+
+        yenButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                countryToConvert = "Japanese Currency";
+                currencyToConvert = "YEN";
+                countryCurrency = "0.012";
+
+                preferences.edit().putString("country", countryToConvert).apply();
+                preferences.edit().putString("currency", currencyToConvert).apply();
+                preferences.edit().putString("countryCurrency", countryCurrency).apply();
+
+            }
+        });
+
+        sekButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                countryToConvert = "Swedish Krona Currency";
+                currencyToConvert = "SEK";
+                countryCurrency = "0.15";
 
                 preferences.edit().putString("country", countryToConvert).apply();
                 preferences.edit().putString("currency", currencyToConvert).apply();

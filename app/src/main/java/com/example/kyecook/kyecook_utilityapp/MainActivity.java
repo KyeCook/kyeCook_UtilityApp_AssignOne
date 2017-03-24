@@ -11,7 +11,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-//todo make settings go into top menu bar using <menu> within xml file
+/*
+Author : Kye Cook
+
+Utility App - Currency Converter/Calculator
+ */
+/*
+todo Change currency variables into 'Currency' or 'BigDecimal' datatypes
+todo Allow user to convert from AUD to USD
+
+*/
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,12 +28,11 @@ public class MainActivity extends AppCompatActivity {
     private TextView countryToBeConvertedString;
 
     private TextView convertedCurrency;
-    private EditText moneyToConvert;
     private double currency;
-
     private SharedPreferences preferences;
 
-//    TODO use shared preferences to set country/currency that is to be converted
+    EditText moneyToConvert;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
                     currency = Double.parseDouble(s.toString());
 
+//                     Testing to make sure strings displaying correctly
 //                    convertedCurrency.setText(String.valueOf("$" + currency));
 
                 } catch (Exception e) {
@@ -72,7 +81,10 @@ public class MainActivity extends AppCompatActivity {
         conversionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                This is the segment for the conversion button. It loads the 'convert' method.
+        /* This is the segment for the conversion button. It uses values from Settings Activity
+                in calculations */
+
+
 
                 double currencyToConvert = Double.parseDouble(preferences.getString("countryCurrency",""));
 
@@ -86,6 +98,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+
+//    Sets shared-preferences to from settings to be reloaded each time main is started
     protected void onStart() {
         super.onStart();
 
@@ -94,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+//    Handles handler for the settings button and changes activity view when clicked to that of settings
     public void settingsHandler(View view) {
         Intent intent = new Intent(this, settingsActivity.class);
         startActivity(intent);

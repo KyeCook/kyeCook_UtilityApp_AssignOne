@@ -8,4 +8,6 @@
     <string name="usd">USD</string>
     <string name="euros_conversion">Euros Conversion</string>
     <string name="usd_conversion">USD Conversion</string>
+    <string name="yen_conversion">YEN Conversion</string>
+    <string name="sek_conversion">SEK Conversion</string>
 </resources>
