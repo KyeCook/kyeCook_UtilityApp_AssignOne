@@ -12,6 +12,7 @@ public class settingsActivity extends AppCompatActivity {
     String countryToConvert;
     String currencyToConvert;
     String countryCurrency;
+    String countrySymbol;
 
     private SharedPreferences preferences;
 
@@ -35,10 +36,12 @@ public class settingsActivity extends AppCompatActivity {
                 countryToConvert = "America";
                 currencyToConvert = "USD";
                 countryCurrency = "1.29";
+                countrySymbol = "$";
 
                 preferences.edit().putString("country", countryToConvert).apply();
                 preferences.edit().putString("currency", currencyToConvert).apply();
                 preferences.edit().putString("countryCurrency", countryCurrency).apply();
+                preferences.edit().putString("countrySymbol", countrySymbol).apply();
 
 
             }
@@ -51,10 +54,12 @@ public class settingsActivity extends AppCompatActivity {
                 countryToConvert = "Euro Currency";
                 currencyToConvert = "EURO";
                 countryCurrency = "1.41";
+                countrySymbol = "€";
 
                 preferences.edit().putString("country", countryToConvert).apply();
                 preferences.edit().putString("currency", currencyToConvert).apply();
                 preferences.edit().putString("countryCurrency", countryCurrency).apply();
+                preferences.edit().putString("countrySymbol", countrySymbol).apply();
 
             }
         });
@@ -66,10 +71,12 @@ public class settingsActivity extends AppCompatActivity {
                 countryToConvert = "Japanese Currency";
                 currencyToConvert = "YEN";
                 countryCurrency = "0.012";
+                countrySymbol = "¥";
 
                 preferences.edit().putString("country", countryToConvert).apply();
                 preferences.edit().putString("currency", currencyToConvert).apply();
                 preferences.edit().putString("countryCurrency", countryCurrency).apply();
+                preferences.edit().putString("countrySymbol", countrySymbol).apply();
 
             }
         });
@@ -81,10 +88,12 @@ public class settingsActivity extends AppCompatActivity {
                 countryToConvert = "Swedish Krona Currency";
                 currencyToConvert = "SEK";
                 countryCurrency = "0.15";
+                countrySymbol = "kr";
 
                 preferences.edit().putString("country", countryToConvert).apply();
                 preferences.edit().putString("currency", currencyToConvert).apply();
                 preferences.edit().putString("countryCurrency", countryCurrency).apply();
+                preferences.edit().putString("countrySymbol", countrySymbol).apply();
 
             }
         });
@@ -98,6 +107,7 @@ public class settingsActivity extends AppCompatActivity {
         preferences.edit().putString("country", countryToConvert).apply();
         preferences.edit().putString("currency", currencyToConvert).apply();
         preferences.edit().putString("countryCurrency", countryCurrency).apply();
+        preferences.edit().putString("countrySymbol", countrySymbol).apply();
     }
 
     @Override
@@ -107,10 +117,12 @@ public class settingsActivity extends AppCompatActivity {
         countryToConvert = "United States Dollars";
         currencyToConvert = "USD";
         countryCurrency = "1.29";
+        countrySymbol = "$";
 
         preferences.edit().putString("country", countryToConvert).apply();
         preferences.edit().putString("currency", currencyToConvert).apply();
         preferences.edit().putString("countryCurrency", countryCurrency).apply();
+        preferences.edit().putString("countrySymbol", countrySymbol).apply();
     }
 
     public void backHandler(View view) {

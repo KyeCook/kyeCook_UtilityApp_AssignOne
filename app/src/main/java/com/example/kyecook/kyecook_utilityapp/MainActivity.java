@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.Locale;
+
 /*
 Author : Kye Cook
 
@@ -42,9 +44,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
+//        Set the preferences to be shared between activities
         preferences = getSharedPreferences("countryPreferences", MODE_PRIVATE);
 
-
+//        Set variables for xml fields
         countryToBeConverted = (TextView) findViewById(R.id.countryToBeConverted);
         countryToBeConvertedString = (TextView) findViewById(R.id.countryToBeConvertedString);
 
@@ -92,16 +97,21 @@ public class MainActivity extends AppCompatActivity {
         /* This is the segment for the conversion button. It uses values from Settings Activity
                 in calculations */
 
+                String countrySymbol = preferences.getString("countrySymbol", "");
                 String convertedCurrencyString;
 
                 double currencyToConvert = Double.parseDouble(preferences.getString("countryCurrency",""));
 
                 if(countryToBeConverted.getText().toString().equals("AUD")){
-                    convertedCurrencyString = '$' + String.valueOf(currency / currencyToConvert);
+//                    Have used Local.getdefault to eliminate error messages for implicitly using it
+                    convertedCurrencyString = countrySymbol + String.format(Locale.getDefault(), "%.2f",
+                            (currency / currencyToConvert));
+
                     convertedCurrency.setText(convertedCurrencyString);
+
                 } else {
 
-                    convertedCurrencyString = '$' + String.valueOf(currency * currencyToConvert);
+                    convertedCurrencyString = "$" + String.valueOf(currency * currencyToConvert);
                     convertedCurrency.setText(convertedCurrencyString);
                 }
 
