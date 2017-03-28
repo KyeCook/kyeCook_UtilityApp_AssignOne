@@ -32,11 +32,15 @@ public class MainActivity extends AppCompatActivity {
     private double currency;
     private SharedPreferences preferences;
 
+    private double currencyToConvert;
+    private String countrySymbol;
+
     EditText moneyToConvert;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -44,6 +48,9 @@ public class MainActivity extends AppCompatActivity {
 
 //        Set the preferences to be shared between activities
         preferences = getSharedPreferences("countryPreferences", MODE_PRIVATE);
+
+
+
 
 //        Pull XML values
         countryToBeConverted = (TextView) findViewById(R.id.countryToBeConverted);
@@ -57,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button conversionButton = (Button) findViewById(R.id.conversionButton);
         Button switchConversions = (Button) findViewById(R.id.switchConversions);
+
 
 //        Handles user input within EditText field
         moneyToConvert.addTextChangedListener(new TextWatcher() {
@@ -90,14 +98,12 @@ public class MainActivity extends AppCompatActivity {
         conversionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-        /* This is the segment for the conversion button. It uses values from Settings Activity
-                in calculations */
+/*
+            This is the segment for the conversion button. It uses values from Settings Activity
+            in calculations
+*/
 
-//                Country Symbol allows for countries currency symbol '€' etc. to be placed instead of '$'
-                String countrySymbol = preferences.getString("countrySymbol", "");
                 String convertedCurrencyString;
-
-                double currencyToConvert = Double.parseDouble(preferences.getString("countryCurrency",""));
 
 //                Set condition statement to detect whether Aus currency is being converted or other
                 if(countryToBeConverted.getText().toString().equals("AUD")){
@@ -109,7 +115,8 @@ public class MainActivity extends AppCompatActivity {
 
                 } else {
 
-                    convertedCurrencyString = "$" + String.valueOf(currency * currencyToConvert);
+                    convertedCurrencyString = "$" + String.format(Locale.getDefault(), "%.2f",
+                            (currency * currencyToConvert));
                     convertedCurrency.setText(convertedCurrencyString);
                 }
 
@@ -122,22 +129,48 @@ public class MainActivity extends AppCompatActivity {
 /*
                 Handles switching of currencies too allow user to input Australian currency to see
                 foreign value
-                 */
+*/
 
                 if(countryToBeConverted.getText().toString().equals("AUD")){
+                    if(preferences.getString("currency", "").equals("")){
+//                        For testing
+                        System.out.println("Null Preferences - Default Values used");
 
-                    countryToBeConverted.setText(preferences.getString("currency", ""));
-                    countryToBeConvertedString.setText(preferences.getString("country", ""));
+                        countryToBeConverted.setText(R.string.usd);
+                        countryToBeConvertedString.setText(R.string.americanValue);
 
-                    convertedCountryCurrency.setText(R.string.aud);
-                    convertedCountryText.setText(R.string.australianValue);
+                        convertedCountryCurrency.setText(R.string.aud);
+                        convertedCountryText.setText(R.string.australianValue);
+                    }else {
+                        System.out.println("Preferences have been changed");
+
+                        countryToBeConverted.setText(preferences.getString("currency", ""));
+                        countryToBeConvertedString.setText(preferences.getString("country", ""));
+
+                        convertedCountryCurrency.setText(R.string.aud);
+                        convertedCountryText.setText(R.string.australianValue);
+                    }
+
 
                 } else {
-                    convertedCountryCurrency.setText(preferences.getString("currency", ""));
-                    convertedCountryText.setText(preferences.getString("country", ""));
+                    if(preferences.getString("currency", "").equals("")) {
+//                        For testing
+                        System.out.println("Null preferences - Default values used");
 
-                    countryToBeConverted.setText(R.string.aud);
-                    countryToBeConvertedString.setText(R.string.australianValue);
+                        convertedCountryCurrency.setText(R.string.usd);
+                        convertedCountryText.setText(R.string.americanValue);
+
+                        countryToBeConverted.setText(R.string.aud);
+                        countryToBeConvertedString.setText(R.string.australianValue);
+                    } else {
+                        System.out.println("Preferences have been changed");
+
+                        convertedCountryCurrency.setText(preferences.getString("currency", ""));
+                        convertedCountryText.setText(preferences.getString("country", ""));
+
+                        countryToBeConverted.setText(R.string.aud);
+                        countryToBeConvertedString.setText(R.string.australianValue);
+                    }
                 }
             }
         });
@@ -150,8 +183,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        countryToBeConverted.setText(preferences.getString("currency", ""));
-        countryToBeConvertedString.setText(preferences.getString("country", ""));
+        countryToBeConverted.setText(preferences.getString("currency", "USD"));
+        countryToBeConvertedString.setText(preferences.getString("country", "United States Dollars"));
+        currencyToConvert = Double.parseDouble(preferences.getString("countryCurrency","1.29"));
+        countrySymbol = preferences.getString("countrySymbol", "$");
 
     }
 
