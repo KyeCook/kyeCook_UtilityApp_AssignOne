@@ -46,7 +46,7 @@ public class settingsActivity extends AppCompatActivity {
 
             }
         });
-
+//        Handles EURO button operation - sets European values to preferences to be used by main Activity
         euruButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,6 +64,7 @@ public class settingsActivity extends AppCompatActivity {
             }
         });
 
+//        Handles YEN button operation - sets Japanese values to preferences to be used by main Activity
         yenButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,6 +82,7 @@ public class settingsActivity extends AppCompatActivity {
             }
         });
 
+//        Handles SEK button operation - sets Swedish values to preferences to be used by main Activity
         sekButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,6 +112,7 @@ public class settingsActivity extends AppCompatActivity {
         preferences.edit().putString("countrySymbol", countrySymbol).apply();
     }
 
+//    Sets default values to be used when starting the program for the very first time
     @Override
     protected void onStart() {
         super.onStart();
@@ -125,6 +128,10 @@ public class settingsActivity extends AppCompatActivity {
         preferences.edit().putString("countrySymbol", countrySymbol).apply();
     }
 
+/*
+Back button for those that don't like built-in android back - also allows for possible IOS
+version to be implemented
+*/
     public void backHandler(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

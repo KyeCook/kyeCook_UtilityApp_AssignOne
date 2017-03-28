@@ -18,14 +18,10 @@ Author : Kye Cook
 
 Utility App - Currency Converter/Calculator
  */
-/*
-todo Change currency variables into 'Currency' or 'BigDecimal' datatypes
-todo Allow user to convert from AUD to USD
-
-*/
 
 public class MainActivity extends AppCompatActivity {
 
+//    Setup variables for XML values
     private TextView countryToBeConverted;
     private TextView countryToBeConvertedString;
 
@@ -49,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 //        Set the preferences to be shared between activities
         preferences = getSharedPreferences("countryPreferences", MODE_PRIVATE);
 
-//        Set variables for xml fields
+//        Pull XML values
         countryToBeConverted = (TextView) findViewById(R.id.countryToBeConverted);
         countryToBeConvertedString = (TextView) findViewById(R.id.countryToBeConvertedString);
 
@@ -62,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         Button conversionButton = (Button) findViewById(R.id.conversionButton);
         Button switchConversions = (Button) findViewById(R.id.switchConversions);
 
+//        Handles user input within EditText field
         moneyToConvert.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -74,13 +71,12 @@ public class MainActivity extends AppCompatActivity {
 
                 try {
 
+//                    Changes user input (String) into double so that calculations etc. can be performed
                     currency = Double.parseDouble(s.toString());
 
-//                     Testing to make sure strings displaying correctly
-//                    convertedCurrency.setText(String.valueOf("$" + currency));
 
                 } catch (Exception e) {
-
+//                    Catches inputs that aren't numerical and stops from crashing/showing developer style error messages
                 }
             }
 
@@ -97,11 +93,13 @@ public class MainActivity extends AppCompatActivity {
         /* This is the segment for the conversion button. It uses values from Settings Activity
                 in calculations */
 
+//                Country Symbol allows for countries currency symbol '€' etc. to be placed instead of '$'
                 String countrySymbol = preferences.getString("countrySymbol", "");
                 String convertedCurrencyString;
 
                 double currencyToConvert = Double.parseDouble(preferences.getString("countryCurrency",""));
 
+//                Set condition statement to detect whether Aus currency is being converted or other
                 if(countryToBeConverted.getText().toString().equals("AUD")){
 //                    Have used Local.getdefault to eliminate error messages for implicitly using it
                     convertedCurrencyString = countrySymbol + String.format(Locale.getDefault(), "%.2f",
@@ -122,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 /*
-                Handles switching of currencies too alow user to iput Australian currency to see
+                Handles switching of currencies too allow user to input Australian currency to see
                 foreign value
                  */
 
