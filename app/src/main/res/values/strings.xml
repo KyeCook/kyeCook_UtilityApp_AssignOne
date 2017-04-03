@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Australian Currency Converter</string>
+    <string name="app_name">Currency Converter</string>
     <string name="americanValue">United States Dollars</string>
     <string name="australianValue">Australian Dollars</string>
     <string name="settingsButtonText">Settings</string>
