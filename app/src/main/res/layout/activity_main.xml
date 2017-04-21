@@ -119,7 +119,6 @@
             android:textSize="30sp"/>
 
     </LinearLayout>
-
     <Button
         android:text="@string/settingsButtonText"
         android:layout_width="match_parent"
